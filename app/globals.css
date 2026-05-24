@@ -363,23 +363,23 @@ body {
     color: var(--white-90) !important;
 }
 
-/* Keep pure white text inside colored action buttons and gradients */
-.light .bg-gradient-to-r,
-.light .bg-gradient-to-r *,
-.light .bg-pink-500,
-.light .bg-pink-500 *,
-.light .bg-pink-600,
-.light .bg-pink-600 *,
-.light .bg-purple-500,
-.light .bg-purple-500 *,
-.light .bg-emerald-500,
-.light .bg-emerald-500 *,
-.light .bg-emerald-600,
-.light .bg-emerald-600 *,
-.light .bg-red-500,
-.light .bg-red-500 *,
-.light .bg-red-600,
-.light .bg-red-600 * {
+/* Keep pure white text inside colored action buttons and gradients (excluding text-clip gradients) */
+.light .bg-gradient-to-r:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-gradient-to-r:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) *,
+.light .bg-pink-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-pink-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) *,
+.light .bg-pink-600:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-pink-600:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) *,
+.light .bg-purple-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-purple-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) *,
+.light .bg-emerald-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-emerald-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) *,
+.light .bg-emerald-600:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-emerald-600:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) *,
+.light .bg-red-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-red-500:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) *,
+.light .bg-red-600:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt),
+.light .bg-red-600:not(.bg-clip-text):not(.gradient-text):not(.gradient-text-alt) * {
     color: #ffffff !important;
 }
 
@@ -408,6 +408,17 @@ body {
 .light .dark-mockup .border-white\/5 {
     border-color: rgba(255, 255, 255, 0.05) !important;
 }
+
+/* Force gradient text elements to remain transparent fill in light mode */
+.light .bg-clip-text,
+.light [class*="bg-clip-"],
+.light .gradient-text,
+.light .gradient-text-alt,
+.light [class*="text-transparent"] {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
 
 
 
