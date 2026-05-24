@@ -291,13 +291,20 @@ body {
 .light .text-slate-400 {
     color: var(--white-70) !important; /* extremely clear and crisp! */
 }
-.light .text-slate-500 {
+.light .text-slate-500,
+.light .text-slate-550 {
     color: var(--white-60) !important;
 }
 
 /* Background overrides */
 .light .bg-slate-900 {
     background-color: var(--dark-800) !important;
+}
+.light .bg-slate-900\/40 {
+    background-color: rgba(240, 238, 252, 0.6) !important;
+}
+.light .bg-slate-900\/60 {
+    background-color: rgba(240, 238, 252, 0.8) !important;
 }
 .light .bg-slate-950 {
     background-color: var(--dark-800) !important;
