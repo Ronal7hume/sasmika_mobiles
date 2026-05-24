@@ -4,11 +4,13 @@ import React, { createContext, useContext, useState, useCallback } from 'react';
 
 const ToastContext = createContext();
 
+let toastIdCounter = 0;
+
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
 
   const showToast = useCallback((message, type = 'success', duration = 3000) => {
-    const id = Date.now();
+    const id = `${Date.now()}-${toastIdCounter++}`;
     setToasts((prev) => [...prev, { id, message, type }]);
 
     setTimeout(() => {
