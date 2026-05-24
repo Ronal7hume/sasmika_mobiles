@@ -71,17 +71,16 @@ export function CartProvider({ children }) {
           quantity
         });
       }
-      showToast('Product added to cart! 🛒', 'success');
       return updatedCart;
     });
+    // Call showToast OUTSIDE the setCart callback to avoid render-phase updates
+    showToast('Product added to cart! 🛒', 'success');
   };
 
   const removeFromCart = (productId) => {
-    setCart((prevCart) => {
-      const updated = prevCart.filter((item) => item.id !== productId);
-      showToast('Item removed from cart', 'info');
-      return updated;
-    });
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    // Call showToast OUTSIDE the setCart callback
+    showToast('Item removed from cart', 'info');
   };
 
   const updateQuantity = (productId, newQuantity) => {
@@ -101,20 +100,16 @@ export function CartProvider({ children }) {
   };
 
   const toggleFavorite = (productId) => {
-    let active = false;
-    setFavorites((prevFavs) => {
-      const isAlready = prevFavs.includes(productId);
-      if (isAlready) {
-        showToast('Removed from favorites', 'info');
-        active = false;
-        return prevFavs.filter((id) => id !== productId);
-      } else {
-        showToast('Added to favorites! ❤️', 'success');
-        active = true;
-        return [...prevFavs, productId];
-      }
-    });
-    return active;
+    const isAlready = favorites.includes(productId);
+    if (isAlready) {
+      setFavorites((prevFavs) => prevFavs.filter((id) => id !== productId));
+      showToast('Removed from favorites', 'info');
+      return false;
+    } else {
+      setFavorites((prevFavs) => [...prevFavs, productId]);
+      showToast('Added to favorites! ❤️', 'success');
+      return true;
+    }
   };
 
   const isFavorite = (productId) => {
