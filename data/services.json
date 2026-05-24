@@ -1,0 +1,54 @@
+[
+  {
+    "id": "s001",
+    "name": "Photo Frames",
+    "type": "frame",
+    "description": "Custom photo frames with premium print quality. Available in multiple sizes — perfect for gifting memories to your loved ones.",
+    "icon": "🖼️",
+    "price": 199,
+    "deliveryDays": "3-5",
+    "sizes": ["6x4 inch", "8x6 inch", "10x8 inch", "12x10 inch", "A4 Size", "A3 Size"],
+    "image": ""
+  },
+  {
+    "id": "s002",
+    "name": "Mug Printing",
+    "type": "mug",
+    "description": "Get your favorite photos printed on high-quality mugs. Choose from white, magic, and color-changing mugs.",
+    "icon": "☕",
+    "price": 249,
+    "deliveryDays": "2-4",
+    "mugTypes": ["White Mug", "Magic Mug", "Color Changing Mug", "Inner Color Mug"],
+    "image": ""
+  },
+  {
+    "id": "s003",
+    "name": "Custom Pillows",
+    "type": "pillow",
+    "description": "Personalized photo pillows — a perfect gift for birthdays, anniversaries, and special occasions.",
+    "icon": "🛋️",
+    "price": 399,
+    "deliveryDays": "4-6",
+    "image": ""
+  },
+  {
+    "id": "s004",
+    "name": "Phone Backcase",
+    "type": "backcase",
+    "description": "Custom photo printed phone back cases. Available for all phone models with high-quality UV printing.",
+    "icon": "📲",
+    "price": 299,
+    "deliveryDays": "3-5",
+    "image": ""
+  },
+  {
+    "id": "s005",
+    "name": "Custom Bracelets",
+    "type": "bracelet",
+    "description": "Personalized bracelets with custom names and designs. Great for couples and friends.",
+    "icon": "📿",
+    "price": 149,
+    "deliveryDays": "2-3",
+    "image": ""
+  }
+]

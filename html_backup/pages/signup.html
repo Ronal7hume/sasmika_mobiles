@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — Sasmika Mobiles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="auth-header">
+                <span class="logo-icon">📱</span>
+                <h2>Create Account</h2>
+                <p>Join Sasmika Mobiles today</p>
+            </div>
+            <form class="auth-form" id="signup-form" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label class="form-label" for="signup-name">Full Name</label>
+                    <input class="form-input" type="text" id="signup-name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signup-email">Email</label>
+                    <input class="form-input" type="email" id="signup-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signup-phone">Phone Number</label>
+                    <input class="form-input" type="tel" id="signup-phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signup-password">Password</label>
+                    <input class="form-input" type="password" id="signup-password" placeholder="Create a password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signup-address">Address (Optional)</label>
+                    <textarea class="form-textarea" id="signup-address" placeholder="Enter your delivery address" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" id="signup-submit-btn">Create Account</button>
+            </form>
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+            <div style="text-align: center; margin-top: var(--space-4);">
+                <a href="../index.html" style="font-size: var(--text-sm); color: var(--white-40);">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/data.js"></script>
+    <script>
+        function handleSignup(e) {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const phone = document.getElementById('signup-phone').value;
+            const password = document.getElementById('signup-password').value;
+            const address = document.getElementById('signup-address').value;
+
+            const users = getUsers();
+            if (users.find(u => u.phone === phone)) {
+                alert('Phone number already registered. Please login.');
+                return;
+            }
+
+            const newUser = {
+                id: 'u' + Date.now(),
+                name,
+                email,
+                phone,
+                password,
+                address,
+                createdAt: new Date().toISOString()
+            };
+
+            users.push(newUser);
+            setStorageData('users', users);
+            setStorageData('currentUser', newUser);
+            alert('Account created successfully! Welcome to Sasmika Mobiles! 🎉');
+            window.location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+[
+  { "id": "headsets", "name": "Headsets", "icon": "🎧", "types": ["Wired", "Neckband", "Airpods", "Over-Ear"] },
+  { "id": "chargers", "name": "Chargers", "icon": "🔌", "types": ["Fast Charger", "Wireless Charger", "Car Charger", "Multi-Port"] },
+  { "id": "covers", "name": "Phone Covers", "icon": "📱", "types": ["Back Case", "Flip Cover", "Transparent", "Silicon"] },
+  { "id": "cables", "name": "Cables", "icon": "🔗", "types": ["USB-C", "Lightning", "Micro USB", "Multi-Cable"] },
+  { "id": "speakers", "name": "Speakers", "icon": "🔊", "types": ["Bluetooth Speaker", "Portable", "Party Speaker"] },
+  { "id": "powerbanks", "name": "Power Banks", "icon": "🔋", "types": ["10000mAh", "20000mAh", "Mini"] },
+  { "id": "tempered", "name": "Tempered Glass", "icon": "🛡️", "types": ["Full Cover", "Privacy", "Matte"] },
+  { "id": "holders", "name": "Holders & Stands", "icon": "🗜️", "types": ["Car Mount", "Desk Stand", "Ring Holder"] }
+]
