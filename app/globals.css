@@ -275,3 +275,139 @@ body {
     --glass-border: rgba(0, 0, 0, 0.07);
 }
 
+/* ---------- Light Mode Tailwind Classes Overrides ---------- */
+.light .text-white {
+    color: var(--white) !important;
+}
+.light .text-slate-100 {
+    color: var(--white-90) !important;
+}
+.light .text-slate-200 {
+    color: var(--white-80) !important;
+}
+.light .text-slate-300 {
+    color: var(--white-80) !important;
+}
+.light .text-slate-400 {
+    color: var(--white-60) !important;
+}
+.light .text-slate-500 {
+    color: var(--white-40) !important;
+}
+
+/* Background overrides */
+.light .bg-slate-900 {
+    background-color: var(--dark-800) !important;
+}
+.light .bg-slate-950 {
+    background-color: var(--dark-800) !important;
+}
+.light .bg-slate-950\/40 {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+}
+.light .bg-slate-950\/60 {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.light .bg-slate-950\/70 {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}
+.light .bg-slate-950\/80 {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+.light .bg-slate-950\/98 {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* Border overrides */
+.light .border-white\/5 {
+    border-color: var(--glass-border) !important;
+}
+.light .border-white\/10 {
+    border-color: var(--glass-border) !important;
+}
+
+/* White bg transparency overrides */
+.light .bg-white\/5 {
+    background-color: var(--white-05) !important;
+}
+.light .bg-white\/10 {
+    background-color: var(--white-10) !important;
+}
+.light .bg-white\/80 {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+.light .hover\:bg-white\/10:hover {
+    background-color: var(--white-10) !important;
+}
+.light .hover\:bg-white\/5:hover {
+    background-color: var(--white-05) !important;
+}
+
+/* Card gradients & shadows */
+.light .glass-card {
+    background: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid rgba(0, 0, 0, 0.07) !important;
+    box-shadow: 0 4px 20px rgba(12, 10, 26, 0.05) !important;
+}
+
+/* Inputs and select options */
+.light input,
+.light select,
+.light textarea {
+    background-color: var(--dark-900) !important;
+    color: var(--white-90) !important;
+    border-color: var(--glass-border) !important;
+}
+.light select option {
+    background-color: var(--dark-800) !important;
+    color: var(--white-90) !important;
+}
+
+/* Keep pure white text inside colored action buttons and gradients */
+.light .bg-gradient-to-r,
+.light .bg-gradient-to-r *,
+.light .bg-pink-500,
+.light .bg-pink-500 *,
+.light .bg-pink-600,
+.light .bg-pink-600 *,
+.light .bg-purple-500,
+.light .bg-purple-500 *,
+.light .bg-emerald-500,
+.light .bg-emerald-500 *,
+.light .bg-emerald-600,
+.light .bg-emerald-600 *,
+.light .bg-red-500,
+.light .bg-red-500 *,
+.light .bg-red-600,
+.light .bg-red-600 * {
+    color: #ffffff !important;
+}
+
+/* Keep dark theme styles for specific mockup elements */
+.light .dark-mockup .bg-slate-950 {
+    background-color: #0c0a1a !important;
+}
+.light .dark-mockup .bg-slate-900 {
+    background-color: #12101f !important;
+}
+.light .dark-mockup .bg-slate-900\/60 {
+    background-color: rgba(18, 16, 31, 0.6) !important;
+}
+.light .dark-mockup .bg-slate-900\/80 {
+    background-color: rgba(18, 16, 31, 0.8) !important;
+}
+.light .dark-mockup .bg-slate-950\/70 {
+    background-color: rgba(12, 10, 26, 0.7) !important;
+}
+.light .dark-mockup .text-white {
+    color: #ffffff !important;
+}
+.light .dark-mockup .text-slate-400 {
+    color: #94a3b8 !important;
+}
+.light .dark-mockup .border-white\/5 {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+
+

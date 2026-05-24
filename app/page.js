@@ -120,7 +120,7 @@ export default function Home() {
           </div>
 
           {/* Visual Showcase */}
-          <div className="lg:col-span-5 hidden lg:flex justify-center relative">
+          <div className="lg:col-span-5 hidden lg:flex justify-center relative dark-mockup">
             {/* Phone visualization */}
             <div className="w-80 h-[500px] border-4 border-slate-900 rounded-[50px] bg-slate-950 shadow-2xl relative p-3 overflow-hidden ring-4 ring-white/5 flex items-center justify-center">
               <div className="absolute top-0 w-32 h-6 bg-slate-900 rounded-b-2xl z-20" />
