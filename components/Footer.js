@@ -4,26 +4,26 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 border-t border-white/5 pt-16 pb-8 text-slate-400">
+    <footer className="bg-[var(--dark-800)] border-t border-[var(--glass-border)] pt-16 pb-8 text-[var(--white-60)]">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
         
         {/* About Section */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <span className="text-2xl">📱</span>
-            <span className="font-display text-xl font-extrabold text-white">
+            <span className="font-display text-xl font-extrabold text-[var(--white)]">
               Sasmika <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Mobiles</span>
             </span>
           </div>
-          <p className="text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed text-[var(--white-60)]">
             Your destination for premium mobile accessories and beautiful customized gift services. We bring quality products and your precious memories to life.
           </p>
         </div>
 
         {/* Categories / Quick Links */}
         <div className="flex flex-col gap-4">
-          <h3 className="font-display font-bold text-white text-base">Quick Links</h3>
-          <div className="flex flex-col gap-2 text-sm">
+          <h3 className="font-display font-bold text-[var(--white)] text-base">Quick Links</h3>
+          <div className="flex flex-col gap-2 text-sm text-[var(--white-60)]">
             <Link href="/" className="hover:text-pink-500 transition-colors">Home</Link>
             <Link href="/gallery" className="hover:text-pink-500 transition-colors">All Accessories</Link>
             <Link href="/services" className="hover:text-pink-500 transition-colors">Custom Gifts</Link>
@@ -35,8 +35,8 @@ export default function Footer() {
 
         {/* Accessories Categories */}
         <div className="flex flex-col gap-4">
-          <h3 className="font-display font-bold text-white text-base">Accessories</h3>
-          <div className="flex flex-col gap-2 text-sm">
+          <h3 className="font-display font-bold text-[var(--white)] text-base">Accessories</h3>
+          <div className="flex flex-col gap-2 text-sm text-[var(--white-60)]">
             <Link href="/gallery?category=headsets" className="hover:text-purple-400 transition-colors">Headsets & Neckbands</Link>
             <Link href="/gallery?category=chargers" className="hover:text-purple-400 transition-colors">Fast Chargers</Link>
             <Link href="/gallery?category=covers" className="hover:text-purple-400 transition-colors">Designer Covers</Link>
@@ -47,15 +47,15 @@ export default function Footer() {
 
         {/* Contact Info */}
         <div className="flex flex-col gap-4">
-          <h3 className="font-display font-bold text-white text-base">Shop Contact</h3>
-          <div className="flex flex-col gap-3 text-sm">
+          <h3 className="font-display font-bold text-[var(--white)] text-base">Shop Contact</h3>
+          <div className="flex flex-col gap-3 text-sm text-[var(--white-60)]">
             <div className="flex items-center gap-3">
               <Phone size={16} className="text-pink-500" />
-              <a href="tel:8526033272" className="hover:text-white transition-colors">8526033272</a>
+              <a href="tel:8526033272" className="hover:text-[var(--white)] transition-colors">8526033272</a>
             </div>
             <div className="flex items-center gap-3">
               <Mail size={16} className="text-pink-500" />
-              <a href="mailto:sasmikamobiles@gmail.com" className="hover:text-white transition-colors">sasmikamobiles@gmail.com</a>
+              <a href="mailto:sasmikamobiles@gmail.com" className="hover:text-[var(--white)] transition-colors">sasmikamobiles@gmail.com</a>
             </div>
             <div className="flex items-start gap-3">
               <MapPin size={16} className="text-pink-500 mt-1 shrink-0" />
@@ -73,7 +73,7 @@ export default function Footer() {
 
       </div>
 
-      <div className="container mx-auto px-6 border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div className="container mx-auto px-6 border-t border-[var(--glass-border)] mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--white-60)]">
         <p>&copy; {new Date().getFullYear()} Sasmika Mobiles. All rights reserved.</p>
         <p>Quality Accessories & Customized Prints</p>
       </div>

@@ -12,14 +12,18 @@ import {
   Home, 
   Menu, 
   X,
-  FileText
+  FileText,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useToast } from '@/context/ToastContext';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
   const router = useRouter();
   const { showToast } = useToast();
+  const { theme, toggleTheme } = useTheme();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -58,15 +62,15 @@ export default function AdminLayout({ children }) {
 
   // If on login page, render children directly without sidebar
   if (pathname === '/admin/login') {
-    return <div className="bg-[#0c0a1a] min-h-screen text-slate-100">{children}</div>;
+    return <div className="bg-[var(--dark-900)] min-h-screen text-[var(--white-90)] transition-colors duration-300">{children}</div>;
   }
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#0c0a1a] text-slate-100">
+      <div className="flex items-center justify-center min-h-screen bg-[var(--dark-900)] text-[var(--white-90)]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 rounded-full border-2 border-slate-700 border-t-pink-500 animate-spin" />
-          <p className="text-sm text-slate-400 font-medium">Verifying Session...</p>
+          <div className="w-12 h-12 rounded-full border-2 border-[var(--dark-500)] border-t-pink-500 animate-spin" />
+          <p className="text-sm text-[var(--white-60)] font-medium">Verifying Session...</p>
         </div>
       </div>
     );
@@ -75,13 +79,13 @@ export default function AdminLayout({ children }) {
   if (!isAuthenticated) return null;
 
   return (
-    <div className="bg-[#0c0a1a] min-h-screen text-slate-100 flex">
+    <div className="bg-[var(--dark-900)] min-h-screen text-[var(--white-90)] flex transition-colors duration-300">
       {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex flex-col w-64 bg-slate-950 border-r border-white/5 p-6 shrink-0 h-screen sticky top-0">
+      <aside className="hidden md:flex flex-col w-64 bg-[var(--dark-800)] border-r border-[var(--glass-border)] p-6 shrink-0 h-screen sticky top-0">
         {/* Brand */}
         <div className="flex items-center gap-2 mb-10">
           <span className="text-2xl">⚡</span>
-          <span className="font-display text-lg font-extrabold text-white">
+          <span className="font-display text-lg font-extrabold text-[var(--white)]">
             Admin<span className="text-pink-500">Panel</span>
           </span>
         </div>
@@ -97,8 +101,8 @@ export default function AdminLayout({ children }) {
                 href={item.path}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/20 text-white'
-                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                    ? 'bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/20 text-[var(--white)]'
+                    : 'text-[var(--white-60)] hover:bg-[var(--white-05)] hover:text-[var(--white)]'
                 }`}
               >
                 <Icon size={18} className={isActive ? 'text-pink-500' : ''} />
@@ -109,10 +113,18 @@ export default function AdminLayout({ children }) {
         </nav>
 
         {/* Footer Actions */}
-        <div className="flex flex-col gap-2 mt-auto pt-6 border-t border-white/5">
+        <div className="flex flex-col gap-2 mt-auto pt-6 border-t border-[var(--glass-border)]">
+          <button
+            onClick={toggleTheme}
+            className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-[var(--white-60)] hover:bg-[var(--white-05)] hover:text-[var(--white)] w-full text-left"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            <span>{theme === 'dark' ? 'Light Theme' : 'Dark Theme'}</span>
+          </button>
+
           <Link
             href="/"
-            className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-white"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-[var(--white-60)] hover:bg-[var(--white-05)] hover:text-[var(--white)]"
           >
             <Home size={18} />
             <span>Go to Shop</span>
@@ -130,16 +142,16 @@ export default function AdminLayout({ children }) {
 
       {/* Mobile Header */}
       <div className="flex flex-col flex-grow min-h-screen">
-        <header className="md:hidden flex items-center justify-between px-6 py-4 bg-slate-950 border-b border-white/5 sticky top-0 z-30">
+        <header className="md:hidden flex items-center justify-between px-6 py-4 bg-[var(--dark-800)] border-b border-[var(--glass-border)] sticky top-0 z-30">
           <div className="flex items-center gap-2">
             <span className="text-xl">⚡</span>
-            <span className="font-display text-base font-extrabold text-white">
+            <span className="font-display text-base font-extrabold text-[var(--white)]">
               Admin<span className="text-pink-500">Panel</span>
             </span>
           </div>
           <button 
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 text-slate-400 hover:text-white"
+            className="p-2 text-[var(--white-60)] hover:text-[var(--white)]"
           >
             {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -147,7 +159,7 @@ export default function AdminLayout({ children }) {
 
         {/* Mobile Navigation Drawer */}
         {sidebarOpen && (
-          <div className="fixed inset-0 top-16 bg-slate-950/98 backdrop-blur-lg z-40 md:hidden flex flex-col p-6 gap-6">
+          <div className="fixed inset-0 top-16 bg-[var(--dark-800)]/98 backdrop-blur-lg z-40 md:hidden flex flex-col p-6 gap-6">
             <nav className="flex flex-col gap-2">
               {menuItems.map((item) => {
                 const isActive = pathname === item.path;
@@ -159,8 +171,8 @@ export default function AdminLayout({ children }) {
                     onClick={() => setSidebarOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold ${
                       isActive
-                        ? 'bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 text-white'
-                        : 'text-slate-300'
+                        ? 'bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 text-[var(--white)]'
+                        : 'text-[var(--white-80)]'
                     }`}
                   >
                     <Icon size={20} className={isActive ? 'text-pink-500' : ''} />
@@ -170,11 +182,19 @@ export default function AdminLayout({ children }) {
               })}
             </nav>
 
-            <div className="flex flex-col gap-2 mt-auto border-t border-white/5 pt-6">
+            <div className="flex flex-col gap-2 mt-auto border-t border-[var(--glass-border)] pt-6">
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-3 px-4 py-3 text-[var(--white-80)] w-full text-left"
+              >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                <span>{theme === 'dark' ? 'Light Theme' : 'Dark Theme'}</span>
+              </button>
+
               <Link
                 href="/"
                 onClick={() => setSidebarOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 text-slate-300"
+                className="flex items-center gap-3 px-4 py-3 text-[var(--white-80)]"
               >
                 <Home size={20} />
                 <span>Go to Shop</span>

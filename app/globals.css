@@ -248,3 +248,30 @@ body {
         transform: translateY(0);
     }
 }
+
+/* ---------- Light Mode Variables Remapping ---------- */
+.light {
+    --dark-900: #faf8ff;
+    --dark-800: #f0eefc;
+    --dark-700: #e2dff8;
+    --dark-600: #d4d0f4;
+    --dark-500: #c6c1f0;
+    --dark-400: #b5acec;
+    --dark-300: #8d81c9;
+    --dark-200: #685ca7;
+    --dark-100: #493e86;
+
+    --white: #0c0a1a;
+    --white-90: #12101f;
+    --white-80: #1a1730;
+    --white-70: #231f40;
+    --white-60: #3d3666;
+    --white-40: #5a5280;
+    --white-20: rgba(0, 0, 0, 0.15);
+    --white-10: rgba(0, 0, 0, 0.08);
+    --white-05: rgba(0, 0, 0, 0.04);
+
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.07);
+}
+
