@@ -261,18 +261,18 @@ body {
     --dark-200: #685ca7;
     --dark-100: #493e86;
 
-    --white: #0c0a1a;
-    --white-90: #12101f;
-    --white-80: #1a1730;
-    --white-70: #231f40;
-    --white-60: #3d3666;
-    --white-40: #5a5280;
-    --white-20: rgba(0, 0, 0, 0.15);
-    --white-10: rgba(0, 0, 0, 0.08);
-    --white-05: rgba(0, 0, 0, 0.04);
+    --white: #020205;       /* Dynamic pure contrast black */
+    --white-90: #080710;    /* Dynamic deep dark */
+    --white-80: #0e0d1a;    /* Dynamic dark */
+    --white-70: #18162b;    /* Dynamic dark gray */
+    --white-60: #232140;    /* Dynamic dark purple/gray - extremely readable! */
+    --white-40: #35325c;    /* Deep gray for subtitle/faint text */
+    --white-20: rgba(0, 0, 0, 0.2);
+    --white-10: rgba(0, 0, 0, 0.12);
+    --white-05: rgba(0, 0, 0, 0.06);
 
-    --glass-bg: rgba(255, 255, 255, 0.75);
-    --glass-border: rgba(0, 0, 0, 0.07);
+    --glass-bg: rgba(255, 255, 255, 0.85); /* Less transparent for higher contrast */
+    --glass-border: rgba(0, 0, 0, 0.1);
 }
 
 /* ---------- Light Mode Tailwind Classes Overrides ---------- */
@@ -283,16 +283,16 @@ body {
     color: var(--white-90) !important;
 }
 .light .text-slate-200 {
-    color: var(--white-80) !important;
+    color: var(--white-90) !important;
 }
 .light .text-slate-300 {
     color: var(--white-80) !important;
 }
 .light .text-slate-400 {
-    color: var(--white-60) !important;
+    color: var(--white-70) !important; /* extremely clear and crisp! */
 }
 .light .text-slate-500 {
-    color: var(--white-40) !important;
+    color: var(--white-60) !important;
 }
 
 /* Background overrides */
