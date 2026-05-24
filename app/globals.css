@@ -426,6 +426,17 @@ body {
     -webkit-text-fill-color: transparent !important;
 }
 
+/* Ensure low-opacity/transparent active states get dark high-contrast text in light mode */
+.light [class*="\/10"],
+.light [class*="\/10"] *,
+.light [class*="\/20"],
+.light [class*="\/20"] *,
+.light [class*="\/30"],
+.light [class*="\/30"] * {
+    color: var(--white) !important;
+}
+
+
 
 
 
