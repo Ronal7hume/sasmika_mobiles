@@ -220,6 +220,16 @@ export default function AdminLayout({ children }) {
         <main className="flex-grow p-6 md:p-10 max-w-6xl w-full mx-auto">
           {children}
         </main>
+
+        {/* Admin Footer Bar */}
+        <div className="border-t border-[var(--glass-border)] mt-auto px-6 md:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] text-[var(--white-40)]">
+          <p>&copy; {new Date().getFullYear()} Sasmika Mobiles. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+            <Link href="/privacy-policy" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
+            <span className="text-[var(--white-10)]">|</span>
+            <span>Admin Panel v1.0</span>
+          </div>
+        </div>
       </div>
     </div>
   );
