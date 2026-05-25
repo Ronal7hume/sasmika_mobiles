@@ -73,9 +73,9 @@ export default function Footer() {
 
       </div>
 
-      <div className="container mx-auto px-6 border-t border-[var(--glass-border)] mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--white-60)]">
+      <div className="container mx-auto px-6 border-t border-[var(--glass-border)] mt-8 pt-6 pb-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[var(--white-60)] text-center md:text-left">
         <p>&copy; {new Date().getFullYear()} Sasmika Mobiles. All rights reserved.</p>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 flex-wrap justify-center md:justify-end">
           <Link href="/privacy-policy" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
           <span className="text-[var(--white-10)]">|</span>
           <span>Quality Accessories & Customized Prints</span>
