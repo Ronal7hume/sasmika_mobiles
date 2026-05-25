@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--dark-800)] border-t border-[var(--glass-border)] pt-16 pb-8 text-[var(--white-60)]">
+    <footer className="bg-[var(--dark-800)] border-t border-[var(--glass-border)] pt-16 text-[var(--white-60)]">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
         
         {/* About Section */}
@@ -73,7 +73,7 @@ export default function Footer() {
 
       </div>
 
-      <div className="container mx-auto px-6 border-t border-[var(--glass-border)] mt-8 pt-6 pb-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[var(--white-60)] text-center md:text-left">
+      <div className="container mx-auto px-6 border-t border-[var(--glass-border)] mt-8 pt-6 pb-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[var(--white-60)] text-center md:text-left">
         <p>&copy; {new Date().getFullYear()} Sasmika Mobiles. All rights reserved.</p>
         <div className="flex items-center gap-3 flex-wrap justify-center md:justify-end">
           <Link href="/privacy-policy" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
