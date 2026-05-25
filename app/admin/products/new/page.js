@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/context/ToastContext';
-import { ArrowLeft, Save, Sparkles } from 'lucide-react';
+import { ArrowLeft, Save, Sparkles, Upload, ImagePlus, X, Link2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function NewProductPage() {
@@ -26,6 +26,60 @@ export default function NewProductPage() {
   const [image, setImage] = useState('');
   const [featured, setFeatured] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [useUrlMode, setUseUrlMode] = useState(false);
+
+  // Handle image file upload
+  const handleImageUpload = async (file) => {
+    if (!file) return;
+    
+    const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml'];
+    if (!validTypes.includes(file.type)) {
+      showToast('Invalid image type. Use JPEG, PNG, WebP, GIF or SVG.', 'warning');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('Image too large. Max size is 5MB.', 'warning');
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      if (res.ok) {
+        const data = await res.json();
+        setImage(data.path);
+        showToast('Image uploaded successfully! 📸', 'success');
+      } else {
+        const err = await res.json();
+        showToast(err.error || 'Upload failed', 'error');
+      }
+    } catch (err) {
+      showToast('Upload error. Please try again.', 'error');
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer?.files?.[0];
+    if (file) handleImageUpload(file);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
 
   // Load categories
   useEffect(() => {
@@ -262,16 +316,95 @@ export default function NewProductPage() {
             />
           </div>
 
-          {/* Image Path Selector */}
+          {/* Image Upload Section */}
           <div className="flex flex-col gap-2 md:col-span-2">
-            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Product Image File Name / Path</label>
-            <input 
-              type="text"
-              placeholder="e.g. /images/products/neckband.jpg (or paste URL)"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              className="px-4 py-3 bg-slate-900/60 border border-white/5 focus:border-pink-500/40 rounded-xl text-sm outline-none w-full"
-            />
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Product Image</label>
+              <button
+                type="button"
+                onClick={() => setUseUrlMode(!useUrlMode)}
+                className="flex items-center gap-1.5 text-[10px] font-semibold text-purple-400 hover:text-purple-300 transition-colors"
+              >
+                {useUrlMode ? <><ImagePlus size={12} /> Upload File</> : <><Link2 size={12} /> Paste URL</>}
+              </button>
+            </div>
+
+            {useUrlMode ? (
+              /* URL / Path mode fallback */
+              <input 
+                type="text"
+                placeholder="e.g. https://example.com/image.jpg or /uploads/photo.png"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="px-4 py-3 bg-slate-900/60 border border-white/5 focus:border-pink-500/40 rounded-xl text-sm outline-none w-full"
+              />
+            ) : (
+              /* Drag & Drop Upload Zone */
+              <div
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onClick={() => !isUploading && document.getElementById('product-image-input')?.click()}
+                className={`relative flex flex-col items-center justify-center gap-3 p-8 border-2 border-dashed rounded-2xl cursor-pointer transition-all duration-200 min-h-[180px] ${
+                  isDragging
+                    ? 'border-pink-500 bg-pink-500/5 scale-[1.01]'
+                    : image
+                      ? 'border-emerald-500/30 bg-emerald-500/5'
+                      : 'border-white/10 bg-slate-900/30 hover:border-pink-500/30 hover:bg-slate-900/50'
+                }`}
+              >
+                <input
+                  id="product-image-input"
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) handleImageUpload(file);
+                    e.target.value = '';
+                  }}
+                />
+
+                {isUploading ? (
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-10 h-10 rounded-full border-2 border-slate-700 border-t-pink-500 animate-spin" />
+                    <span className="text-xs text-slate-400 font-medium">Uploading image...</span>
+                  </div>
+                ) : image ? (
+                  /* Preview uploaded image */
+                  <div className="flex flex-col items-center gap-3 w-full">
+                    <div className="relative group">
+                      <img
+                        src={image}
+                        alt="Product preview"
+                        className="w-32 h-32 object-cover rounded-xl border border-white/10 shadow-lg"
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                      />
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setImage(''); }}
+                        className="absolute -top-2 -right-2 p-1 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <X size={12} />
+                      </button>
+                    </div>
+                    <span className="text-[10px] text-emerald-400 font-semibold">✓ Image ready — click to replace</span>
+                    <span className="text-[10px] text-slate-500 truncate max-w-xs">{image}</span>
+                  </div>
+                ) : (
+                  /* Empty state */
+                  <>
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/20 flex items-center justify-center">
+                      <Upload size={24} className="text-pink-500" />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm font-semibold text-slate-300">Drag & drop your image here</p>
+                      <p className="text-[10px] text-slate-500 mt-1">or click to browse — JPEG, PNG, WebP, GIF up to 5MB</p>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Specifications Description */}

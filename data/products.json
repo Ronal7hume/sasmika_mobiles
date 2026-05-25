@@ -122,7 +122,7 @@
     "offerPercent": 30,
     "color": "Black",
     "specs": "Wired Earphones | HD Sound | Tangle-Free Cable | In-line Mic",
-    "rating": 4.0,
+    "rating": 4,
     "image": "",
     "featured": false,
     "stock": 60
@@ -186,9 +186,25 @@
     "offerPercent": 38,
     "color": "Clear",
     "specs": "Anti-Fingerprint | 9H Hardness | Full Glue | Smooth Touch",
-    "rating": 4.0,
+    "rating": 4,
     "image": "",
     "featured": false,
     "stock": 100
+  },
+  {
+    "id": "p013",
+    "name": "test",
+    "category": "chargers",
+    "type": "Fast Charger",
+    "brand": "test",
+    "price": 100,
+    "offerPrice": 90,
+    "offerPercent": 10,
+    "color": "Black",
+    "specs": "",
+    "rating": 5,
+    "image": "/images/placeholder.jpg",
+    "featured": true,
+    "stock": 30
   }
 ]
