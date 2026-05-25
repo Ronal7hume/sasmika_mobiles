@@ -76,7 +76,7 @@ export default function AdminDashboard() {
       icon: ShoppingBag,
       color: 'from-pink-500 to-rose-500',
       shadow: 'shadow-pink-500/10',
-      link: '/admin/products'
+      link: '/sm-panel/products'
     },
     {
       title: 'Customer Orders',
@@ -84,7 +84,7 @@ export default function AdminDashboard() {
       icon: ShoppingCart,
       color: 'from-purple-500 to-indigo-500',
       shadow: 'shadow-purple-500/10',
-      link: '/admin/orders'
+      link: '/sm-panel/orders'
     },
     {
       title: 'Total Sales Revenue',
@@ -92,7 +92,7 @@ export default function AdminDashboard() {
       icon: DollarSign,
       color: 'from-emerald-500 to-teal-500',
       shadow: 'shadow-emerald-500/10',
-      link: '/admin/orders'
+      link: '/sm-panel/orders'
     },
     {
       title: 'Critical Low Stock',
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
       icon: AlertTriangle,
       color: stats.lowStock > 0 ? 'from-amber-500 to-orange-500 animate-pulse' : 'from-slate-600 to-slate-700',
       shadow: 'shadow-amber-500/10',
-      link: '/admin/products'
+      link: '/sm-panel/products'
     }
   ];
 
@@ -158,7 +158,7 @@ export default function AdminDashboard() {
               <h2 className="font-display text-lg font-bold text-white">Recent Placed Orders</h2>
               <p className="text-xs text-slate-400 mt-0.5">Quick lookup of the last 5 transactions</p>
             </div>
-            <Link href="/admin/orders" className="text-xs font-semibold text-pink-500 hover:text-pink-400 flex items-center gap-1.5 transition-colors">
+            <Link href="/sm-panel/orders" className="text-xs font-semibold text-pink-500 hover:text-pink-400 flex items-center gap-1.5 transition-colors">
               <span>View All</span>
               <ArrowRight size={14} />
             </Link>
@@ -186,7 +186,7 @@ export default function AdminDashboard() {
                   recentOrders.map((order) => (
                     <tr key={order.id} className="hover:bg-white/5 transition-colors group">
                       <td className="py-4 font-mono text-xs font-bold text-slate-400 group-hover:text-pink-500 transition-colors">
-                        <Link href={`/admin/orders?search=${order.id}`}>
+                        <Link href={`/sm-panel/orders?search=${order.id}`}>
                           {order.id}
                         </Link>
                       </td>
@@ -250,7 +250,7 @@ export default function AdminDashboard() {
                       {p.stock} left
                     </span>
                     <Link 
-                      href={`/admin/products?edit=${p.id}`}
+                      href={`/sm-panel/products?edit=${p.id}`}
                       className="text-[10px] text-pink-500 hover:text-pink-400 font-semibold tracking-wider uppercase transition-colors"
                     >
                       Restock

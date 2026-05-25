@@ -9,7 +9,7 @@ import { ToastProvider } from '@/context/ToastContext';
 
 export default function LayoutShell({ children }) {
   const pathname = usePathname();
-  const isAdmin = pathname ? pathname.startsWith('/admin') : false;
+  const isAdmin = pathname ? pathname.startsWith('/sm-panel') : false;
 
   return (
     <ToastProvider>

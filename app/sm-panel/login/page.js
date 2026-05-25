@@ -16,7 +16,7 @@ export default function AdminLoginPage() {
     // If already logged in, redirect directly to dashboard
     const adminSession = localStorage.getItem('sasmika_admin_logged');
     if (adminSession) {
-      router.push('/admin');
+      router.push('/sm-panel');
     }
   }, [router]);
 
@@ -40,7 +40,7 @@ export default function AdminLoginPage() {
       if (response.ok && data.success) {
         localStorage.setItem('sasmika_admin_logged', 'true');
         showToast('Login successful! Welcome to Dashboard.', 'success');
-        router.push('/admin');
+        router.push('/sm-panel');
       } else {
         showToast(data.error || 'Invalid credentials', 'error');
       }

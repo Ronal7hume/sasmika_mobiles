@@ -120,11 +120,11 @@ export default function EditProductPage() {
           }
         } else {
           showToast('Failed to load product details', 'error');
-          router.push('/admin/products');
+          router.push('/sm-panel/products');
         }
       } catch (err) {
         showToast('Error loading details from API', 'error');
-        router.push('/admin/products');
+        router.push('/sm-panel/products');
       } finally {
         setIsLoading(false);
       }
@@ -198,7 +198,7 @@ export default function EditProductPage() {
 
       if (res.ok) {
         showToast('Product updated successfully! ✨', 'success');
-        router.push('/admin/products');
+        router.push('/sm-panel/products');
       } else {
         const errorData = await res.json();
         showToast(errorData.error || 'Failed to save product edits', 'error');
@@ -226,7 +226,7 @@ export default function EditProductPage() {
       {/* Back Button Header */}
       <div className="flex items-center gap-4">
         <Link 
-          href="/admin/products"
+          href="/sm-panel/products"
           className="p-2.5 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-white/5 rounded-xl transition-all"
         >
           <ArrowLeft size={18} />

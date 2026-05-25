@@ -160,7 +160,7 @@ export default function NewProductPage() {
 
       if (res.ok) {
         showToast('Product added successfully! 📦', 'success');
-        router.push('/admin/products');
+        router.push('/sm-panel/products');
       } else {
         const errorData = await res.json();
         showToast(errorData.error || 'Failed to save product', 'error');
@@ -177,7 +177,7 @@ export default function NewProductPage() {
       {/* Back Button Header */}
       <div className="flex items-center gap-4">
         <Link 
-          href="/admin/products"
+          href="/sm-panel/products"
           className="p-2.5 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-white/5 rounded-xl transition-all"
         >
           <ArrowLeft size={18} />

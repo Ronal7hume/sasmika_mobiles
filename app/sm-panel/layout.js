@@ -34,14 +34,14 @@ export default function AdminLayout({ children }) {
     const adminSession = localStorage.getItem('sasmika_admin_logged');
     
     // Skip auth check if we are on the login page
-    if (pathname === '/admin/login') {
+    if (pathname === '/sm-panel/login') {
       setIsLoading(false);
       return;
     }
 
     if (!adminSession) {
       showToast('Admin session expired. Please log in.', 'error');
-      router.push('/admin/login');
+      router.push('/sm-panel/login');
     } else {
       setIsAuthenticated(true);
       setIsLoading(false);
@@ -49,21 +49,21 @@ export default function AdminLayout({ children }) {
   }, [pathname, router, showToast]);
 
   const menuItems = [
-    { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
-    { name: 'Products Catalog', path: '/admin/products', icon: ShoppingBag },
-    { name: 'Add Product', path: '/admin/products/new', icon: PlusCircle },
-    { name: 'Manage Offers', path: '/admin/offers', icon: Tag },
-    { name: 'Customer Orders', path: '/admin/orders', icon: ShoppingCart },
+    { name: 'Dashboard', path: '/sm-panel', icon: LayoutDashboard },
+    { name: 'Products Catalog', path: '/sm-panel/products', icon: ShoppingBag },
+    { name: 'Add Product', path: '/sm-panel/products/new', icon: PlusCircle },
+    { name: 'Manage Offers', path: '/sm-panel/offers', icon: Tag },
+    { name: 'Customer Orders', path: '/sm-panel/orders', icon: ShoppingCart },
   ];
 
   const handleLogout = () => {
     localStorage.removeItem('sasmika_admin_logged');
     showToast('Logged out of Admin Panel', 'info');
-    router.push('/admin/login');
+    router.push('/sm-panel/login');
   };
 
   // If on login page, render children directly without sidebar
-  if (pathname === '/admin/login') {
+  if (pathname === '/sm-panel/login') {
     return <div className="bg-[var(--dark-900)] min-h-screen text-[var(--white-90)] transition-colors duration-300">{children}</div>;
   }
 

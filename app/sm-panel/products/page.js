@@ -50,7 +50,7 @@ export default function AdminProductsPage() {
   // Redirect to edit if edit param is present (for quick restock from dashboard)
   useEffect(() => {
     if (editParam) {
-      router.push(`/admin/products/${editParam}/edit`);
+      router.push(`/sm-panel/products/${editParam}/edit`);
     }
   }, [editParam, router]);
 
@@ -109,7 +109,7 @@ export default function AdminProductsPage() {
           <p className="text-slate-400 text-sm mt-1">Manage and edit your store's mobile accessories and stock</p>
         </div>
         <Link 
-          href="/admin/products/new"
+          href="/sm-panel/products/new"
           className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 px-5 py-3 text-sm font-bold text-white rounded-xl shadow-lg shadow-pink-500/10 transition-all hover:-translate-y-0.5 self-start sm:self-auto"
         >
           <Plus size={18} />
@@ -213,7 +213,7 @@ export default function AdminProductsPage() {
                         </Link>
                         
                         <Link 
-                          href={`/admin/products/${p.id}/edit`}
+                          href={`/sm-panel/products/${p.id}/edit`}
                           className="p-2 text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 rounded-lg transition-colors"
                           title="Edit Details"
                         >
