@@ -52,7 +52,7 @@ Please get back to me!`;
   const contactCards = [
     { title: 'Call Us Directly', value: '+91 85260 33272', desc: 'Mon-Sat (9am - 10pm)', icon: Phone, color: 'text-pink-500 bg-pink-500/10' },
     { title: 'Email Inquiries', value: 'sasmikamobiles@gmail.com', desc: 'Immediate replies within 24h', icon: Mail, color: 'text-purple-500 bg-purple-500/10' },
-    { title: 'Shop Location', value: 'Sasmika Mobiles', desc: 'Bus stand, Venkateswarapuram, Alangulam, Tenkasi', icon: MapPin, color: 'text-pink-500 bg-pink-500/10' },
+    { title: 'Shop Location', value: 'Sasmika Mobiles', desc: '7/419, Main Road, Bus Stand, Venkateswarapuram, Alangulam, Tenkasi', icon: MapPin, color: 'text-pink-500 bg-pink-500/10' },
     { title: 'Operating Hours', value: '9:00 AM - 10:00 PM', desc: 'Open all days of the week', icon: Clock, color: 'text-purple-500 bg-purple-500/10' }
   ];
 
@@ -164,7 +164,7 @@ Please get back to me!`;
             <div className="z-10 flex flex-col gap-1">
               <span className="font-display font-bold text-white text-base">Sasmika Mobiles Retail Shop</span>
               <p className="text-slate-500 text-xs mt-1 leading-relaxed max-w-xs mx-auto">
-                Bus stand, Main road, Venkateswarapuram, Alangulam(T.K), Tenkasi(D.t). - 627854. Located right at the main bus stand area!
+                7/419, Main Road, Bus Stand, Venkateswarapuram, Alangulam(T.K), Tenkasi(D.t) - 627 854. Located right at the main bus stand area!
               </p>
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-pink-500/5 to-transparent pointer-events-none" />

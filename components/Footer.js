@@ -59,7 +59,7 @@ export default function Footer() {
             </div>
             <div className="flex items-start gap-3">
               <MapPin size={16} className="text-pink-500 mt-1 shrink-0" />
-              <span className="leading-relaxed">Bus stand, Main road, Venkateswarapuram, Alangulam(T.K), Tenkasi(D.t). - 627854</span>
+              <span className="leading-relaxed">7/419, Main Road, Bus Stand, Venkateswarapuram, Alangulam(T.K), Tenkasi(D.t) - 627 854</span>
             </div>
             <div className="flex items-start gap-3">
               <Clock size={16} className="text-purple-500 mt-1 shrink-0" />
