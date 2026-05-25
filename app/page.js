@@ -87,7 +87,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col gap-24 overflow-x-hidden relative">
+    <div className="flex flex-col gap-14 overflow-x-hidden relative">
       
       {/* Hero Section */}
       <section className="relative pt-12 pb-24 md:py-32 flex items-center min-h-[85vh]">
