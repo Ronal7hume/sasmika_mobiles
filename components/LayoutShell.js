@@ -19,7 +19,7 @@ export default function LayoutShell({ children }) {
           {!isAdmin && <Navbar />}
           
           {/* Main Content Area */}
-          <main className={`flex-grow ${!isAdmin ? 'pt-24' : ''}`}>
+          <main className={`flex-grow ${!isAdmin ? 'pt-24 pb-24' : ''}`}>
             {children}
           </main>
           
