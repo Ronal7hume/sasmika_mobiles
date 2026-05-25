@@ -90,7 +90,7 @@ export default function Home() {
     <div className="flex flex-col gap-14 overflow-x-hidden relative">
       
       {/* Hero Section */}
-      <section className="relative pt-12 pb-24 md:py-32 flex items-center min-h-[85vh]">
+      <section className="relative pt-4 pb-10 md:pt-6 md:pb-12 flex items-center min-h-[85vh]">
         {/* Background shapes */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-32 -left-32 w-96 h-96 bg-pink-500 rounded-full filter blur-[120px] opacity-15" />
