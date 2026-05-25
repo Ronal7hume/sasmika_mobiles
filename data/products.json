@@ -206,5 +206,21 @@
     "image": "/images/placeholder.jpg",
     "featured": true,
     "stock": 30
+  },
+  {
+    "id": "p014",
+    "name": "test1",
+    "category": "headsets",
+    "type": "Wired",
+    "brand": "Boat",
+    "price": 799,
+    "offerPrice": 759,
+    "offerPercent": 5,
+    "color": "Red",
+    "specs": "qwertyui",
+    "rating": 5,
+    "image": "/uploads/linkedin_banner_1779726592441.png",
+    "featured": false,
+    "stock": 13
   }
 ]

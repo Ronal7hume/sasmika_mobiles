@@ -14,7 +14,8 @@ import {
   X,
   FileText,
   Sun,
-  Moon
+  Moon,
+  Tag
 } from 'lucide-react';
 import { useToast } from '@/context/ToastContext';
 import { useTheme } from '@/context/ThemeContext';
@@ -51,6 +52,7 @@ export default function AdminLayout({ children }) {
     { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
     { name: 'Products Catalog', path: '/admin/products', icon: ShoppingBag },
     { name: 'Add Product', path: '/admin/products/new', icon: PlusCircle },
+    { name: 'Manage Offers', path: '/admin/offers', icon: Tag },
     { name: 'Customer Orders', path: '/admin/orders', icon: ShoppingCart },
   ];
 

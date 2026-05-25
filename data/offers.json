@@ -1,0 +1,46 @@
+[
+  {
+    "id": "o001",
+    "title": "Mega Headset Sale",
+    "description": "Up to 50% discount on all premium headphones, neckbands, and wireless earbuds!",
+    "discount": "50% OFF",
+    "validTill": "December 31, 2026",
+    "badge": "🔥 Hot Deal",
+    "link": "/gallery?category=headsets",
+    "colorTheme": "pink",
+    "active": true
+  },
+  {
+    "id": "o002",
+    "title": "Charger Combo Offer",
+    "description": "Purchase any fast charging adapter and get a high-quality braided charging cable completely FREE!",
+    "discount": "Free Cable",
+    "validTill": "December 31, 2026",
+    "badge": "🎁 Combo Deal",
+    "link": "/gallery?category=chargers",
+    "colorTheme": "purple",
+    "active": true
+  },
+  {
+    "id": "o003",
+    "title": "Custom Gift Bundle",
+    "description": "Order any three customization services (photo frame + magic mug + soft pillow) and receive a flat 20% off!",
+    "discount": "20% OFF",
+    "validTill": "December 31, 2026",
+    "badge": "💝 Gift Bundle",
+    "link": "/services",
+    "colorTheme": "pink",
+    "active": true
+  },
+  {
+    "id": "o004",
+    "title": "New Arrival Accessories",
+    "description": "Get an instant ₹100 discount coupon on any of our newly arrived phone covers and stands this month!",
+    "discount": "₹100 OFF",
+    "validTill": "December 31, 2026",
+    "badge": "🆕 New Arrival",
+    "link": "/gallery?category=covers",
+    "colorTheme": "purple",
+    "active": true
+  }
+]
