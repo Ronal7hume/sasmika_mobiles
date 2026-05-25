@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--dark-800)] border-t border-[var(--glass-border)] pt-16 text-[var(--white-60)]">
+    <footer className="bg-[var(--dark-800)] border-t border-[var(--glass-border)] pt-8 text-[var(--white-60)]">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
         
         {/* About Section */}
