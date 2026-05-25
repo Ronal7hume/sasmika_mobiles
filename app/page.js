@@ -12,13 +12,19 @@ import {
   ShoppingBag,
   Star,
   Heart,
-  ShoppingCart
+  ShoppingCart,
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  Tag
 } from 'lucide-react';
 
 export default function Home() {
   const { addToCart, toggleFavorite, isFavorite } = useCart();
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [offers, setOffers] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Load featured products from dynamic API
   useEffect(() => {
@@ -37,6 +43,31 @@ export default function Home() {
     }
     loadFeatured();
   }, []);
+
+  // Load active offers for banner slideshow
+  useEffect(() => {
+    async function loadOffers() {
+      try {
+        const res = await fetch('/api/offers');
+        if (res.ok) {
+          const data = await res.json();
+          setOffers(data.filter(o => o.active !== false));
+        }
+      } catch (err) {
+        console.error('Failed to load offers', err);
+      }
+    }
+    loadOffers();
+  }, []);
+
+  // Auto-advance slideshow every 4 seconds
+  useEffect(() => {
+    if (offers.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % offers.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [offers.length]);
 
   const categories = [
     { id: 'headsets', name: 'Headsets', icon: '🎧', desc: 'Wired, Neckband & Airpods' },
@@ -113,8 +144,8 @@ export default function Home() {
               </div>
               <div className="w-[1px] bg-white/5" />
               <div className="flex flex-col">
-                <span className="text-2xl font-display font-black text-white">5+</span>
-                <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider mt-1">Printing Services</span>
+                <span className="text-2xl font-display font-black text-white">Since 2020</span>
+                <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider mt-1">Trusted Shop</span>
               </div>
             </div>
           </div>
@@ -151,6 +182,120 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══════ Offers Banner Slideshow ═══════ */}
+      {offers.length > 0 && (
+        <section className="container mx-auto px-6">
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-pink-500/5 border border-white/5">
+            
+            {/* Slides Container */}
+            <div 
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {offers.map((offer, idx) => (
+                <div 
+                  key={offer.id}
+                  className={`w-full shrink-0 relative ${
+                    offer.colorTheme === 'purple'
+                      ? 'bg-gradient-to-r from-purple-950 via-purple-900/80 to-slate-950'
+                      : 'bg-gradient-to-r from-pink-950 via-pink-900/80 to-slate-950'
+                  }`}
+                >
+                  {/* Glow Effects */}
+                  <div className={`absolute top-0 left-0 w-72 h-72 rounded-full filter blur-[120px] opacity-20 pointer-events-none ${
+                    offer.colorTheme === 'purple' ? 'bg-purple-500' : 'bg-pink-500'
+                  }`} />
+                  <div className={`absolute bottom-0 right-0 w-72 h-72 rounded-full filter blur-[120px] opacity-10 pointer-events-none ${
+                    offer.colorTheme === 'purple' ? 'bg-pink-500' : 'bg-purple-500'
+                  }`} />
+                  
+                  <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 px-8 py-10 md:px-14 md:py-14">
+                    {/* Left Content */}
+                    <div className="flex flex-col items-start gap-4 max-w-lg">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className="px-3 py-1 bg-white/10 border border-white/10 text-white text-xs font-bold rounded-full backdrop-blur-sm">
+                          {offer.badge}
+                        </span>
+                        {offer.validTill && (
+                          <span className="flex items-center gap-1 text-[10px] text-slate-400 font-medium">
+                            <Calendar size={10} /> Valid till: {offer.validTill}
+                          </span>
+                        )}
+                      </div>
+                      <h2 className="font-display text-2xl md:text-4xl font-black text-white leading-tight">
+                        {offer.title}
+                      </h2>
+                      <p className="text-slate-300 text-sm leading-relaxed max-w-md">
+                        {offer.description}
+                      </p>
+                      <Link 
+                        href={offer.link || '/offers'}
+                        className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 px-6 py-3 text-sm font-bold text-white rounded-xl shadow-lg shadow-pink-500/15 transition-all hover:-translate-y-0.5 mt-2"
+                      >
+                        <span>Shop this Offer</span>
+                        <ArrowRight size={16} />
+                      </Link>
+                    </div>
+
+                    {/* Right — Big Discount Badge */}
+                    <div className="flex items-center justify-center shrink-0">
+                      <div className={`w-36 h-36 md:w-44 md:h-44 rounded-full flex items-center justify-center border-2 shadow-2xl ${
+                        offer.colorTheme === 'purple'
+                          ? 'bg-purple-500/10 border-purple-500/30 shadow-purple-500/10'
+                          : 'bg-pink-500/10 border-pink-500/30 shadow-pink-500/10'
+                      }`}>
+                        <span className="font-display text-2xl md:text-3xl font-black text-white text-center leading-tight px-2">
+                          {offer.discount}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            {offers.length > 1 && (
+              <>
+                <button 
+                  onClick={() => setCurrentSlide(prev => prev === 0 ? offers.length - 1 : prev - 1)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-black/30 backdrop-blur-md border border-white/10 text-white rounded-full hover:bg-black/50 transition-all z-20"
+                  aria-label="Previous offer"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button 
+                  onClick={() => setCurrentSlide(prev => (prev + 1) % offers.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-black/30 backdrop-blur-md border border-white/10 text-white rounded-full hover:bg-black/50 transition-all z-20"
+                  aria-label="Next offer"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </>
+            )}
+
+            {/* Dot Indicators */}
+            {offers.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+                {offers.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`rounded-full transition-all duration-300 ${
+                      idx === currentSlide
+                        ? 'w-8 h-2.5 bg-gradient-to-r from-pink-500 to-purple-500'
+                        : 'w-2.5 h-2.5 bg-white/20 hover:bg-white/40'
+                    }`}
+                    aria-label={`Go to offer ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+
+          </div>
+        </section>
+      )}
 
       {/* Shop By Category */}
       <section className="container mx-auto px-6 flex flex-col gap-10">

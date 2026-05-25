@@ -34,7 +34,7 @@ export default function AboutPage() {
         <div className="lg:col-span-7 flex flex-col gap-6">
           <h2 className="font-display text-2xl font-extrabold text-white leading-tight">Our Humble Journey & Promise</h2>
           <p className="text-slate-400 text-sm leading-relaxed">
-            Founded with a passion to deliver premium tech gear and customizable printing services to our community, Sasmika Mobiles has grown into a highly trusted regional brand. We believe in providing premium grade accessories and photo printing templates that bring precious smiles to our customers.
+            Founded on <span className="text-white font-bold">January 21, 2020</span> with a passion to deliver premium tech gear and customizable printing services to our community, Sasmika Mobiles has grown into a highly trusted regional brand. We believe in providing premium grade accessories and photo printing templates that bring precious smiles to our customers.
           </p>
           <p className="text-slate-400 text-sm leading-relaxed">
             Whether you are looking for military-grade protective phone covers, fast wall chargers, noise-cancelling earbuds, or personalized heat-sensitive mugs, name-bracelets, and premium photo frames — we verify every single item to ensure supreme satisfaction!
